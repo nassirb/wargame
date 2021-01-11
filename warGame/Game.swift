@@ -18,9 +18,19 @@ class Game {
         while n < 2 {
             n += 1
             print("Entrez le nom du Joueur \(n)")
-            if let playerName = readLine(){
-                print("Bienvenu dans le champ de bataille '\(playerName)', composez votre equipe de 3 combattants")
-                nameOfPlayer = playerName
+            let names = players.map(\.name)
+            var isValid = false
+            
+            while !isValid {
+                if let playerName = readLine(){
+                    print("Bienvenu dans le champ de bataille '\(playerName)', composez votre equipe de 3 combattants")
+                    nameOfPlayer = playerName
+                    isValid = true
+                } else {
+                    if names.contains(nameOfPlayer){
+                        isValid = false
+                    }
+                }
             }
             while teamCharacters.count < 3 {
                 
