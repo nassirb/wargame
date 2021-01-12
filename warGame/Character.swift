@@ -18,7 +18,7 @@ class Character {
         self.tool = tool
     }
     
-    func fight(){
+    func attacked(){
     }
     
     func heal() {
