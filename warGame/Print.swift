@@ -10,7 +10,7 @@ import Foundation
 class Print {
     static func listOfCharacters() {
         
-        print("Entrez le numero du Personnage"
+        print("Choisissez parmis la list des personnages suivant:"
             + "\n1.  Vikings"
             + "\n2.  Chevallier"
             + "\n3.  Archer"

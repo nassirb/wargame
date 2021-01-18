@@ -29,12 +29,14 @@ class Game {
                 }
             }
             print("Bienvenu dans le champ de bataille '\(nameOfPlayer)', composez votre equipe de 3 combattants")
+            
+            Print.listOfCharacters()
+            
             while teamCharacters.count < 3 {
-                
-                Print.listOfCharacters()
+                print("Entrez le numero du  personnage \(teamCharacters.count + 1)")
                 
                 if let playerChoice = readLine(), let choice = Int(playerChoice) {
-                    if choice < 8 {
+                    if choice <= 7 {
                         switch choice {
                         case 1:
                             teamCharacters.append(Viking())
@@ -60,6 +62,8 @@ class Game {
                         default:
                             Print.notUnderstood()
                         }
+                    } else {
+                        Print.notUnderstood()
                     }
                 }
             }
