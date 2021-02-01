@@ -7,8 +7,6 @@
 
 import Foundation
 
-//let vikings = Character(name: "Vikings", health: 20, tool: Axe())
-//vikings.fight()
 
 let game = Game()
 game.choosePlayer()

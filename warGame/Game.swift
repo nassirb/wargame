@@ -98,6 +98,37 @@ class Game {
     }
     
     func startBattle(){
+        print(players.map(\.name)[0] ,"Choisissez parmis votre équipe un joueur", players.map(\.characters)[0].map(\.name))
+        if let characterChoice = readLine(), let myChoice = Int(characterChoice) {
+            if myChoice <= 3 {
+                switch myChoice {
+                case 1:
+                    print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[0] ,", pour aller au front")
+                case 2:
+                    print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[1] ,", pour aller au front")
+                case 3:
+                    print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[2] ,", pour aller au front")
+                default:
+                    Print.notUnderstood()
+                }
+            }
+        }
+        print(players.map(\.name)[0] ,"Choisissez maintenant parmis l'enemi", players.map(\.characters)[1].map(\.name),", celui qui subira l'action")
+        if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
+            if myChoice <= 3 {
+                switch myChoice {
+                case 1:
+                    print("Vous avez ciblé le personnage suivant:" , players.map(\.characters)[1].map(\.name)[0] ,", pour aller au front")
+                case 2:
+                    print("Vous avez ciblé le personage suivant:" , players.map(\.characters)[1].map(\.name)[1] ,", pour aller au front")
+                case 3:
+                    print("Vous avez ciblé le personage suivant:" , players.map(\.characters)[1].map(\.name)[2] ,", pour subir l'action")
+                default:
+                    Print.notUnderstood()
+                }
+            }
+        }
+        
     }
     
     func endBattle(){
