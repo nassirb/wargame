@@ -21,6 +21,6 @@ class Character {
     func attacked(){
     }
     
-    func heal() {
+    func healed() {
     }
 }
