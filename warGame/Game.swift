@@ -18,6 +18,8 @@ class Game {
         while n < 2 {
             n += 1
             
+            
+            Print.lines()
             let names = players.map(\.name)
             var isValid = false
             
@@ -28,11 +30,15 @@ class Game {
                     isValid = !names.contains(playerName)
                 }
             }
+            Print.lineBreak()
             print("Bienvenu dans le champ de bataille '\(nameOfPlayer)', composez votre equipe de 3 combattants")
             
+            Print.lineBreak()
             Print.listOfCharacters()
             
             while teamCharacters.count < 3 {
+                
+                Print.lineBreak()
                 print("Entrez le numero du  personnage \(teamCharacters.count + 1)")
                 
                 if let playerChoice = readLine(), let choice = Int(playerChoice) {
@@ -67,6 +73,8 @@ class Game {
                     }
                 }
             }
+            
+            Print.lineBreak()
             Print.congratTeamCompo()
             print(teamCharacters.map(\.name))
             players.append(Player.init(name: nameOfPlayer, characters: teamCharacters))
@@ -83,18 +91,26 @@ class Game {
         let playerOne = players.map(\.name)[0]
         let plyaertwo = players.map(\.name)[1]
         
+        Print.lines()
         print("Voici les joueurs  et les differrents personnages:"
+            + "\n 1"
             + "\n-Joueur 1"
-            + "\n\(playerOne)"
+            + "\nSon Nom: \(playerOne)"
             + "\nEt voici son équipe"
             + "\n\(teamOne)"
+            + "\n "
             + "\n====================="
+            + "\n====================="
+            + "\n "
             + "\n-Joueur 2"
-            + "\n\(plyaertwo)"
+            + "\nSon Nom: \(plyaertwo)"
             + "\nEt voici son équipe"
             + "\n\(teamTwo)")
         
+        Print.lines()
+        Print.lineBreak()
         print("Avis au \(n) équipes ! RESTEZ EN ALERTE LE COMBAT VA COMMENCER")
+        Print.lineBreak()
     }
     
     func startBattle(){
@@ -110,45 +126,69 @@ class Game {
             secondTeamLife += life
         }
         
-        while (firstTeamLife > 0) || secondTeamLife > 0 {
-            print("Choisissez parmis votre équipe un joueur"
-                + "\n1. \(players.map(\.characters)[0].map(\.name)[0])"
-                + "\n2. \(players.map(\.characters)[0].map(\.name)[1])"
-                + "\n3. \(players.map(\.characters)[0].map(\.name)[2])")
+        Print.lines()
+        
+        while firstTeamLife > 0 || secondTeamLife > 0 {
             
-            if let characterChoice = readLine(), let myChoice = Int(characterChoice) {
-                if myChoice <= 3 {
-                    switch myChoice {
-                    case 1:
-                        print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[0] ,", pour aller au front")
-                    case 2:
-                        print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[1] ,", pour aller au front")
-                    case 3:
-                        print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[2] ,", pour aller au front")
-                    default:
+            var isValidFirstChoice =  false
+            while !isValidFirstChoice {
+                Print.lineBreak()
+                print("Choisissez parmis votre équipe un joueur"
+                    + "\n1. \(players.map(\.characters)[0].map(\.name)[0])"
+                    + "\n2. \(players.map(\.characters)[0].map(\.name)[1])"
+                    + "\n3. \(players.map(\.characters)[0].map(\.name)[2])")
+                
+                if let characterChoice = readLine(), let myChoice = Int(characterChoice) {
+                    if myChoice <= 3 {
+                        switch myChoice {
+                        case 1:
+                            print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[0] ,", pour aller au front")
+                        case 2:
+                            print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[1] ,", pour aller au front")
+                        case 3:
+                            print("Vous avez choisi le personage suivant:" , players.map(\.characters)[0].map(\.name)[2] ,", pour aller au front")
+                        default:
+                            Print.notUnderstood()
+                        }
+                    } else{
                         Print.notUnderstood()
+                    }
+                    if myChoice <= 3 {
+                        isValidFirstChoice = true
                     }
                 }
             }
-            print("Choisissez maintenant parmis l'enemi, celui qui subira l'action"
-                + "\n1. \(players.map(\.characters)[1].map(\.name)[0])"
-                + "\n2. \(players.map(\.characters)[1].map(\.name)[1])"
-                + "\n3. \(players.map(\.characters)[1].map(\.name)[2])")
             
-            if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
-                if myChoice <= 3 {
-                    switch myChoice {
-                    case 1:
-                        print("Vous avez ciblé le personnage suivant:" , players.map(\.characters)[1].map(\.name)[0] ,", pour subir l'action")
-                    case 2:
-                        print("Vous avez ciblé le personage suivant:" , players.map(\.characters)[1].map(\.name)[1] ,", pour subir l'action")
-                    case 3:
-                        print("Vous avez ciblé le personage suivant:" , players.map(\.characters)[1].map(\.name)[2] ,", pour subir l'action")
-                    default:
+            var isValidSecondChoice =  false
+            while !isValidSecondChoice {
+                Print.lineBreak()
+                print("Choisissez maintenant parmis l'enemi, celui qui subira l'action"
+                    + "\n1. \(players.map(\.characters)[1].map(\.name)[0])"
+                    + "\n2. \(players.map(\.characters)[1].map(\.name)[1])"
+                    + "\n3. \(players.map(\.characters)[1].map(\.name)[2])")
+
+                if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
+                    if myChoice <= 3 {
+                        switch myChoice {
+                        case 1:
+                            print("Vous avez ciblé le personnage suivant:" , players.map(\.characters)[1].map(\.name)[0] ,", pour subir l'action")
+                        case 2:
+                            print("Vous avez ciblé le personage suivant:" , players.map(\.characters)[1].map(\.name)[1] ,", pour subir l'action")
+                        case 3:
+                            print("Vous avez ciblé le personage suivant:" , players.map(\.characters)[1].map(\.name)[2] ,", pour subir l'action")
+                        default:
+                            Print.notUnderstood()
+                        }
+                    } else{
                         Print.notUnderstood()
                     }
+                    if myChoice <= 3 {
+                        isValidSecondChoice = true
+                    }
+
                 }
             }
+            
         }
         
     }

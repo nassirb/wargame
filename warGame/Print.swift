@@ -10,7 +10,7 @@ import Foundation
 class Print {
     static func listOfCharacters() {
         
-        print("Choisissez parmis la list des personnages suivant:"
+        print("Choisissez parmis la liste des personnages suivant:"
             + "\n1.  Vikings"
             + "\n2.  Chevallier"
             + "\n3.  Archer"
@@ -21,32 +21,41 @@ class Print {
     }
     
     static func vikingCharcter() {
-        print("Vikings fait parti de votre troupe continuer votre composition")
+        print("Vikings fait parti de votre troupe continuez votre composition")
     }
     static func knightCharcter() {
-        print("Chevalier fait parti de votre troupe continuer votre composition")
+        print("Chevalier fait parti de votre troupe continuez votre composition")
     }
     static func bowmanCharcter() {
-        print("Archer fait parti de votre troupe continuer votre composition")
+        print("Archer fait parti de votre troupe continuez votre composition")
     }
     static func soldierCharcter() {
-        print("Soldat fait parti de votre troupe continuer votre composition")
+        print("Soldat fait parti de votre troupe continuez votre composition")
     }
     static func shamanCharcter() {
-        print("Chaman fait parti de votre troupe continuer votre composition")
+        print("Chaman fait parti de votre troupe continuez votre composition")
     }
     static func surgeonCharcter() {
-        print("Chirurgien fait parti de votre troupe continuer votre composition")
+        print("Chirurgien fait parti de votre troupe continuez votre composition")
     }
     static func nurseCharcter() {
-        print("Infirmier fait parti de votre troupe continuer votre composition")
+        print("Infirmier fait parti de votre troupe continuez votre composition")
     }
     static func notUnderstood() {
-        print("Je n'est pas compris")
+        print("Je n'est pas compris votre choix réssayez")
     }
     
     
     static func congratTeamCompo() {
-        print("Bravo vous aver composer votre équipe ! Préparer vous pour la bataille")
+        print("*********************************************************"
+            + "\nBravo vous avez composé votre équipe ! Préparez vous pour la bataille")
+    }
+    
+    static func lines() {
+        print(" " + "\n========================================================================================" + "\n========================================================================================" + "\n ")
+    }
+    
+    static func lineBreak() {
+        print(" ")
     }
 }
