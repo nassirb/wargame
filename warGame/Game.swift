@@ -89,7 +89,7 @@ class Game {
         let teamTwo = persos[midpoint...]
         
         let playerOne = players.map(\.name)[0]
-        let plyaertwo = players.map(\.name)[1]
+        let plyaerTwo = players.map(\.name)[1]
         
         Print.lines()
         print("Voici les joueurs  et les differrents personnages:"
@@ -103,7 +103,7 @@ class Game {
             + "\n====================="
             + "\n "
             + "\n-Joueur 2"
-            + "\nSon Nom: \(plyaertwo)"
+            + "\nSon Nom: \(plyaerTwo)"
             + "\nEt voici son équipe"
             + "\n\(teamTwo)")
         
@@ -114,26 +114,26 @@ class Game {
     }
     
     func startBattle(){
-        let firstLifes = players.map(\.characters)[0].map(\.health);
-        var firstTeamLife = 0
-        for life in firstLifes {
-            firstTeamLife += life
-        }
-        
-        let secondLifes = players.map(\.characters)[1].map(\.health);
-        var secondTeamLife = 0
-        for life in secondLifes {
-            secondTeamLife += life
-        }
-        
+        let firstTeamLife = players.map(\.characters)[0].map(\.health).reduce(0, +)
+        print("Equipe 1 votre score est éstimé à : \(firstTeamLife) points de vie")
+        let secondTeamLife = players.map(\.characters)[1].map(\.health).reduce(0, +)
+        print("Equipe 2 votre score est éstimé à : \(secondTeamLife) points de vie")
         Print.lines()
         
+        var round = 0
         while firstTeamLife > 0 || secondTeamLife > 0 {
-            
+            Print.lineBreak()
+            round += 1
+            if round%2 == 0 {
+                print("pair")
+            }else {
+                print("impair")
+            }
+            print("Round \(round)")
             var isValidFirstChoice =  false
             while !isValidFirstChoice {
                 Print.lineBreak()
-                print("Choisissez parmis votre équipe un joueur"
+                print("\(players.map(\.name)[0]) choisissez parmis votre équipe un joueur"
                     + "\n1. \(players.map(\.characters)[0].map(\.name)[0])"
                     + "\n2. \(players.map(\.characters)[0].map(\.name)[1])"
                     + "\n3. \(players.map(\.characters)[0].map(\.name)[2])")
