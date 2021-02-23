@@ -87,4 +87,16 @@ class Print {
     static func chooseCharacter(teamCharacters : [Character]){
         print("Entrez le numero du  personnage \(teamCharacters.count + 1)")
     }
+    
+    static func alertStart(n : Int){
+        print("Avis au \(n) équipes ! RESTEZ EN ALERTE LE COMBAT VA COMMENCER")
+    }
+    
+    static func TeamOneLife (firstTeamLife : Int) {
+        print("Equipe 1 votre score est éstimé à : \(firstTeamLife) points de vie")
+    }
+    
+    static func TeamTwoLife (secondTeamLife : Int) {
+        print("Equipe 2 votre score est éstimé à : \(secondTeamLife) points de vie")
+    }
 }
