@@ -58,4 +58,33 @@ class Print {
     static func lineBreak() {
         print(" ")
     }
+    
+    static func playersList(playerOne: String, teamOne: [String], playerTwo: String, teamTwo: [String]) {
+        print("Voici les joueurs  et les differrents personnages:"
+            + "\n 1"
+            + "\n-Joueur 1"
+            + "\nSon Nom: \(playerOne)"
+            + "\nEt voici son équipe"
+            + "\n\(teamOne)"
+            + "\n "
+            + "\n====================="
+            + "\n====================="
+            + "\n "
+            + "\n-Joueur 2"
+            + "\nSon Nom: \(playerTwo)"
+            + "\nEt voici son équipe"
+            + "\n\(teamTwo)")
+    }
+    
+    static func welcomePlayerName(nameOfPlayer : String) {
+        print("Bienvenu dans le champ de bataille '\(nameOfPlayer)', composez votre equipe de 3 combattants")
+    }
+    
+    static func enterPlayerName(n : Int){
+        print("Entrez le nom du Joueur \(n)")
+    }
+    
+    static func chooseCharacter(teamCharacters : [Character]){
+        print("Entrez le numero du  personnage \(teamCharacters.count + 1)")
+    }
 }

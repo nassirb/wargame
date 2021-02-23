@@ -24,22 +24,21 @@ class Game {
             var isValid = false
             
             while !isValid {
-                print("Entrez le nom du Joueur \(n)")
+                Print.enterPlayerName(n : n)
                 if let playerName = readLine(){
                     nameOfPlayer = playerName
                     isValid = !names.contains(playerName)
                 }
             }
             Print.lineBreak()
-            print("Bienvenu dans le champ de bataille '\(nameOfPlayer)', composez votre equipe de 3 combattants")
-            
+            Print.welcomePlayerName(nameOfPlayer : nameOfPlayer)
             Print.lineBreak()
             Print.listOfCharacters()
             
             while teamCharacters.count < 3 {
                 
                 Print.lineBreak()
-                print("Entrez le numero du  personnage \(teamCharacters.count + 1)")
+                Print.chooseCharacter(teamCharacters : teamCharacters)
                 
                 if let playerChoice = readLine(), let choice = Int(playerChoice) {
                     if choice <= 7 {
@@ -85,28 +84,14 @@ class Game {
         
         let persos = players.flatMap(\.characters).map(\.name)
         let midpoint = persos.count / 2
-        let teamOne = persos[..<midpoint]
-        let teamTwo = persos[midpoint...]
+        let teamOne = Array(persos[..<midpoint])
+        let teamTwo = Array(persos[midpoint...])
         
         let playerOne = players.map(\.name)[0]
-        let plyaerTwo = players.map(\.name)[1]
+        let playerTwo = players.map(\.name)[1]
         
         Print.lines()
-        print("Voici les joueurs  et les differrents personnages:"
-            + "\n 1"
-            + "\n-Joueur 1"
-            + "\nSon Nom: \(playerOne)"
-            + "\nEt voici son équipe"
-            + "\n\(teamOne)"
-            + "\n "
-            + "\n====================="
-            + "\n====================="
-            + "\n "
-            + "\n-Joueur 2"
-            + "\nSon Nom: \(plyaerTwo)"
-            + "\nEt voici son équipe"
-            + "\n\(teamTwo)")
-        
+        Print.playersList(playerOne : playerOne , teamOne : teamOne , playerTwo : playerTwo , teamTwo : teamTwo)
         Print.lines()
         Print.lineBreak()
         print("Avis au \(n) équipes ! RESTEZ EN ALERTE LE COMBAT VA COMMENCER")
