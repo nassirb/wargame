@@ -114,24 +114,19 @@ class Game {
                 var characterAttaking: Character!
                 while !isValidFirstChoice {
                     Print.lineBreak()
-                    print("\(player.name) choisissez parmis votre équipe un joueur"
-                        + "\n1. \(player.characters.map(\.name)[0])"
-                        + "\n2. \(player.characters.map(\.name)[1])"
-                        + "\n3. \(player.characters.map(\.name)[2])")
-                    
+                    Print.playerTeam(player : player)
                     if let characterChoice = readLine(), let myChoice = Int(characterChoice) {
                         if myChoice <= 3 {
                             switch myChoice {
                             case 1:
                                 characterAttaking = player.characters[0]
-                                
-                                print("Vous avez choisi le personage suivant:" , characterAttaking.name ,", pour aller au front")
+                                Print.characterAttaking(characterAttaking : characterAttaking)
                             case 2:
                                 characterAttaking = player.characters[1]
-                                print("Vous avez choisi le personage suivant:" , characterAttaking.name ,", pour aller au front")
+                                Print.characterAttaking(characterAttaking : characterAttaking)
                             case 3:
                                 characterAttaking = player.characters[2]
-                                print("Vous avez choisi le personage suivant:" , characterAttaking.name ,", pour aller au front")
+                                Print.characterAttaking(characterAttaking : characterAttaking)
                             default:
                                 Print.notUnderstood()
                             }
@@ -147,26 +142,22 @@ class Game {
                 var isValidSecondChoice =  false
                 while !isValidSecondChoice {
                     Print.lineBreak()
-                    print("Choisissez maintenant parmis l'enemi, celui qui subira l'action"
-                        + "\n1. \(playerAttacked.characters.map(\.name)[0])"
-                        + "\n2. \(playerAttacked.characters.map(\.name)[1])"
-                        + "\n3. \(playerAttacked.characters.map(\.name)[2])")
-
+                    Print.enemiTeam(playerAttacked : playerAttacked)
                     if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
                         if myChoice <= 3 {
                             switch myChoice {
                             case 1:
                                 let characterAttacked = playerAttacked.characters[0]
                                 characterAttacked.attacked()
-                                print("Vous avez ciblé le personnage suivant:" , characterAttacked.name ,", pour subir l'action")
+                                Print.characterAttaked(characterAttacked : characterAttacked)
                             case 2:
                                 let characterAttacked = playerAttacked.characters[1]
                                 characterAttacked.attacked()
-                                print("Vous avez ciblé le personage suivant:" , characterAttacked.name ,", pour subir l'action")
+                                Print.characterAttaked(characterAttacked : characterAttacked)
                             case 3:
                                 let characterAttacked = playerAttacked.characters[2]
                                 characterAttacked.attacked()
-                                print("Vous avez ciblé le personage suivant:" , characterAttacked.name ,", pour subir l'action")
+                                Print.characterAttaked(characterAttacked : characterAttacked)
                             default:
                                 Print.notUnderstood()
                             }

@@ -99,4 +99,25 @@ class Print {
     static func TeamTwoLife (secondTeamLife : Int) {
         print("Equipe 2 votre score est éstimé à : \(secondTeamLife) points de vie")
     }
+    
+    static func playerTeam(player :  Player){
+        print("\(player.name) choisissez parmis votre équipe un joueur"
+            + "\n1. \(player.characters.map(\.name)[0])"
+            + "\n2. \(player.characters.map(\.name)[1])"
+            + "\n3. \(player.characters.map(\.name)[2])")
+    }
+    static func enemiTeam(playerAttacked :  Player){
+        print("Choisissez maintenant parmis l'enemi, celui qui subira l'action"
+            + "\n1. \(playerAttacked.characters.map(\.name)[0])"
+            + "\n2. \(playerAttacked.characters.map(\.name)[1])"
+            + "\n3. \(playerAttacked.characters.map(\.name)[2])")
+    }
+    
+    static func characterAttaking(characterAttaking : Character){
+        print("Vous avez choisi le personage suivant:" , characterAttaking.name ,", pour aller au front")
+    }
+    
+    static func characterAttaked(characterAttacked : Character){
+        print("Vous avez ciblé le personnage suivant:" , characterAttacked.name ,", pour subir l'action")
+    }
 }
