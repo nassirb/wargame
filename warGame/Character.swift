@@ -10,15 +10,16 @@ import Foundation
 class Character {
     var name: String
     var health: Int
-    var tool: Tool
+    var power: Power
     
-    init(name: String, health: Int, tool: Tool) {
+    init(name: String, health: Int, power: Power) {
         self.name = name
         self.health = health
-        self.tool = tool
+        self.power = power
     }
     
-    func attacked(){
+    func inflictDamage(damage: Int){
+        health -= damage
     }
     
     func healed() {

@@ -8,7 +8,7 @@
 import Foundation
 
 class Shaman: Character {
-    override init(name: String = "Chaman", health: Int = 100, tool: Tool = Gem()){
-        super.init(name: name, health: health, tool: tool)
+    override init(name: String = "Chaman", health: Int = 100, power: Power = Gem()){
+        super.init(name: name, health: health, power: power)
     }
 }

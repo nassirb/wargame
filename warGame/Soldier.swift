@@ -8,7 +8,7 @@
 import Foundation
 
 class Soldier: Character {
-    override init(name: String = "Soldat", health: Int = 150, tool: Tool = Shotgun()){
-        super.init(name: name, health: health, tool: tool)
+    override init(name: String = "Soldat", health: Int = 150, power: Power = Shotgun()){
+        super.init(name: name, health: health, power: power)
     }
 }

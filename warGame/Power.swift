@@ -7,10 +7,14 @@
 
 import Foundation
 
-class Tool {
+class Power {
     var name: String
+    var damage: Int
+    var heal: Int
     
-    init(name: String) {
+    init(name: String, damage: Int , heal: Int) {
         self.name = name
+        self.damage = damage
+        self.heal = heal
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class Bowman: Character {
-    override init(name: String = "Archer", health: Int = 110, tool: Tool = Bow()){
-        super.init(name: name, health: health, tool: tool)
+    override init(name: String = "Archer", health: Int = 110, power: Power = Bow()){
+        super.init(name: name, health: health, power: power)
     }
 }

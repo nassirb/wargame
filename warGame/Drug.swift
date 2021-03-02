@@ -7,11 +7,9 @@
 
 import Foundation
 
-class Drug: Tool {
-    var heal: Int
+class Drug: Power {
     
     init(name: String, heal: Int) {
-        self.heal = heal
-        super.init(name: name)
+        super.init(name: name , damage: 0, heal: heal )
     }
 }

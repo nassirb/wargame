@@ -110,6 +110,8 @@ class Game {
         while firstTeamLife > 0 || secondTeamLife > 0 {
             Print.lineBreak()
             for player in players {
+                print(firstTeamLife)
+                print(secondTeamLife)
                 var isValidFirstChoice =  false
                 var characterAttaking: Character!
                 while !isValidFirstChoice {
@@ -148,15 +150,21 @@ class Game {
                             switch myChoice {
                             case 1:
                                 let characterAttacked = playerAttacked.characters[0]
-                                characterAttacked.attacked()
+                                characterAttacked.inflictDamage(damage: characterAttaking.power.damage)
+                                print(characterAttacked.health)
+                                print(characterAttaking.power.damage)
                                 Print.characterAttaked(characterAttacked : characterAttacked)
                             case 2:
                                 let characterAttacked = playerAttacked.characters[1]
-                                characterAttacked.attacked()
+                                characterAttacked.inflictDamage(damage: characterAttaking.power.damage)
+                                print(characterAttacked.health)
+                                print(characterAttaking.power.damage)
                                 Print.characterAttaked(characterAttacked : characterAttacked)
                             case 3:
                                 let characterAttacked = playerAttacked.characters[2]
-                                characterAttacked.attacked()
+                                characterAttacked.inflictDamage(damage: characterAttaking.power.damage)
+                                print(characterAttacked.health)
+                                print(characterAttaking.power.damage)
                                 Print.characterAttaked(characterAttacked : characterAttacked)
                             default:
                                 Print.notUnderstood()

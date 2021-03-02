@@ -7,11 +7,9 @@
 
 import Foundation
 
-class Weapon: Tool {
-    var damage: Int
+class Weapon: Power {
     
     init(name: String, damage: Int) {
-        self.damage = damage
-        super.init(name: name)
+        super.init(name: name, damage: damage ,heal: 0)
     }
 }

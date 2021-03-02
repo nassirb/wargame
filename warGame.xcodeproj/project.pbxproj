@@ -19,7 +19,7 @@
 		EE39AAF52569948600041FFA /* Shaman.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39AAF42569948600041FFA /* Shaman.swift */; };
 		EE39AAF92569959100041FFA /* Surgeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39AAF82569959100041FFA /* Surgeon.swift */; };
 		EE39AAFC256995D700041FFA /* Nurse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39AAFB256995D700041FFA /* Nurse.swift */; };
-		EE3F6BA0256C32910051BF27 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F6B9F256C32910051BF27 /* Tool.swift */; };
+		EE3F6BA0256C32910051BF27 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F6B9F256C32910051BF27 /* Power.swift */; };
 		EE3F6BA4256C3AD60051BF27 /* Drug.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F6BA3256C3AD60051BF27 /* Drug.swift */; };
 		EE3F6BA7256C3BC70051BF27 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F6BA6256C3BC70051BF27 /* Gem.swift */; };
 		EE3F6BAB256C3DC20051BF27 /* Anesthesia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F6BAA256C3DC10051BF27 /* Anesthesia.swift */; };
@@ -58,7 +58,7 @@
 		EE39AAF42569948600041FFA /* Shaman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaman.swift; sourceTree = "<group>"; };
 		EE39AAF82569959100041FFA /* Surgeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surgeon.swift; sourceTree = "<group>"; };
 		EE39AAFB256995D700041FFA /* Nurse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nurse.swift; sourceTree = "<group>"; };
-		EE3F6B9F256C32910051BF27 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		EE3F6B9F256C32910051BF27 /* Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; usesTabs = 0; };
 		EE3F6BA3256C3AD60051BF27 /* Drug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drug.swift; sourceTree = "<group>"; };
 		EE3F6BA6256C3BC70051BF27 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
 		EE3F6BAA256C3DC10051BF27 /* Anesthesia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anesthesia.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		EE56B3DE2575436F0052343A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				EE3F6B9F256C32910051BF27 /* Tool.swift */,
+				EE3F6B9F256C32910051BF27 /* Power.swift */,
 				EE56B3DC2575431F0052343A /* Weapons */,
 				EE56B3DD257543520052343A /* Drugs */,
 			);
@@ -222,7 +222,7 @@
 			files = (
 				EEF8BAB9255A8E790065926F /* Chest.swift in Sources */,
 				EE39AAF225698F1600041FFA /* Soldier.swift in Sources */,
-				EE3F6BA0256C32910051BF27 /* Tool.swift in Sources */,
+				EE3F6BA0256C32910051BF27 /* Power.swift in Sources */,
 				EE3F6BA4256C3AD60051BF27 /* Drug.swift in Sources */,
 				EEB65917255193CA003EA970 /* main.swift in Sources */,
 				EE39AAF92569959100041FFA /* Surgeon.swift in Sources */,

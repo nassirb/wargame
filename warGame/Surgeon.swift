@@ -8,7 +8,7 @@
 import Foundation
 
 class Surgeon: Character {
-    override init(name: String = "Chirurgien", health: Int = 100, tool: Tool = Anesthesia()){
-        super.init(name: name, health: health, tool: tool)
+    override init(name: String = "Chirurgien", health: Int = 100, power: Power = Anesthesia()){
+        super.init(name: name, health: health, power: power)
     }
 }
