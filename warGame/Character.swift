@@ -19,7 +19,11 @@ class Character {
     }
     
     func inflictDamage(damage: Int){
-        health -= damage
+        if health <= 0{
+            return
+        } else {
+            health -= damage
+        }
     }
     
     func healed() {
