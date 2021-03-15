@@ -109,7 +109,10 @@ class Game {
         
         Print.lines()
         
-        while firstTeamLife > 0 || secondTeamLife > 0 {
+        while firstTeamLife > 0 && secondTeamLife > 0 {
+            
+            Print.TeamOneLife(firstTeamLife : firstTeamLife)
+            Print.TeamTwoLife(secondTeamLife : secondTeamLife)
             Print.lineBreak()
             for player in players {
                 print(firstTeamLife)
@@ -154,6 +157,8 @@ class Game {
                         }
                         if myChoice <= 3 && characterAttaking.health > 0 {
                             isValidFirstChoice = true
+                        } else if (characterAttaking.health < 1){
+                            endBattle()
                         }
                     }
                 }
@@ -201,6 +206,8 @@ class Game {
                         }
                         if myChoice <= 3 && characterAttacked.health > 0 {
                             isValidSecondChoice = true
+                        } else if (characterAttacked.health < 1){
+                            endBattle()
                         }
 
                     }
@@ -212,5 +219,6 @@ class Game {
     }
     
     func endBattle(){
+        print("La partie est fini.")
     }
 }

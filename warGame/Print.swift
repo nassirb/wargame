@@ -102,15 +102,15 @@ class Print {
     
     static func playerTeam(player :  Player){
         print("\(player.name) choisissez parmis votre équipe un joueur"
-            + "\n1. \(player.characters.map(\.name)[0])"
-            + "\n2. \(player.characters.map(\.name)[1])"
-            + "\n3. \(player.characters.map(\.name)[2])")
+            + "\n1. \(player.characters.map(\.name)[0]) et son score life est de : \(player.characters.map(\.health)[0])"
+            + "\n2. \(player.characters.map(\.name)[1]) et son score life est de : \(player.characters.map(\.health)[1])"
+            + "\n3. \(player.characters.map(\.name)[2]) et son score life est de : \(player.characters.map(\.health)[2])")
     }
     static func enemiTeam(playerAttacked :  Player){
         print("Choisissez maintenant parmis l'enemi, celui qui subira l'action"
-            + "\n1. \(playerAttacked.characters.map(\.name)[0])"
-            + "\n2. \(playerAttacked.characters.map(\.name)[1])"
-            + "\n3. \(playerAttacked.characters.map(\.name)[2])")
+            + "\n1. \(playerAttacked.characters.map(\.name)[0]) et son score life est de : \(playerAttacked.characters.map(\.health)[0])"
+            + "\n2. \(playerAttacked.characters.map(\.name)[1]) et son score life est de : \(playerAttacked.characters.map(\.health)[1])"
+            + "\n3. \(playerAttacked.characters.map(\.name)[2]) et son score life est de : \(playerAttacked.characters.map(\.health)[2])")
     }
     
     static func characterAttaking(characterAttaking : Character){
