@@ -8,7 +8,7 @@
 import Foundation
 
 class Shotgun: Weapon {
-    override init(name: String = "Fusil à pompe", damage: Int = 120) {
+    override init(name: String = "Fusil à pompe", damage: Int = 100) {
         super.init(name: name, damage: damage)
     }
 }

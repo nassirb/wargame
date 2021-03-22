@@ -15,6 +15,8 @@ class Game {
     private var secondTeamLife: Int {
         players[1].characters.map(\.health).reduce(0, +)
     }
+    var r = 0
+    
     func choosePlayer(){
         var n = 0
         var nameOfPlayer = ""
@@ -22,7 +24,6 @@ class Game {
         
         while n < 2 {
             n += 1
-            
             
             Print.lines()
             let names = players.map(\.name)
@@ -109,7 +110,8 @@ class Game {
         
         Print.lines()
         
-        while firstTeamLife > 0 && secondTeamLife > 0 {
+        while firstTeamLife >= 1 && secondTeamLife >= 1 {
+            r+=1
             
             Print.TeamOneLife(firstTeamLife : firstTeamLife)
             Print.TeamTwoLife(secondTeamLife : secondTeamLife)
@@ -175,8 +177,8 @@ class Game {
                                     Print.attackedDead()
                                     isValidSecondChoice = false
                                 } else{
-                                    Print.characterAttaked(characterAttacked : characterAttacked)
                                     characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
+                                    Print.characterAttaked(characterAttacked : characterAttacked)
                                 }
                             case 2:
                                 characterAttacked = playerAttacked.characters[1]
@@ -184,8 +186,8 @@ class Game {
                                     Print.attackedDead()
                                     isValidSecondChoice = false
                                 } else{
-                                    Print.characterAttaked(characterAttacked : characterAttacked)
                                     characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
+                                    Print.characterAttaked(characterAttacked : characterAttacked)
                                 }
                             case 3:
                                 characterAttacked = playerAttacked.characters[2]
@@ -193,8 +195,8 @@ class Game {
                                     Print.attackedDead()
                                     isValidSecondChoice = false
                                 } else{
-                                    Print.characterAttaked(characterAttacked : characterAttacked)
                                     characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
+                                    Print.characterAttaked(characterAttacked : characterAttacked)
                                 }
                             default:
                                 Print.notUnderstood()
@@ -210,10 +212,13 @@ class Game {
             }
             
         }
-        endBattle()
+        if firstTeamLife <= 0 && secondTeamLife <= 0 {
+            endBattle()
+        }
     }
     
     func endBattle(){
+        print("Le nombre de round est de:", r)
         print("La partie est fini.")
     }
 }
