@@ -113,8 +113,8 @@ class Print {
             + "\n3. \(playerAttacked.characters.map(\.name)[2]) et son score life est de : \(playerAttacked.characters.map(\.health)[2])")
     }
     
-    static func characterAttaking(characterAttaking : Character){
-        print("Vous avez choisi le personage suivant:" , characterAttaking.name ,", pour aller au front")
+    static func characterAttacking(characterAttacking : Character){
+        print("Vous avez choisi le personage suivant:" , characterAttacking.name ,", pour aller au front")
     }
     
     static func characterAttaked(characterAttacked : Character){

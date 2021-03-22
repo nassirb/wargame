@@ -10,10 +10,10 @@ import Foundation
 class Game {
     var players: [Player] = []
     private var firstTeamLife: Int {
-        players.map(\.characters)[0].map(\.health).reduce(0, +)
+        players[0].characters.map(\.health).reduce(0, +)
     }
     private var secondTeamLife: Int {
-        players.map(\.characters)[1].map(\.health).reduce(0, +)
+        players[1].characters.map(\.health).reduce(0, +)
     }
     func choosePlayer(){
         var n = 0
@@ -118,7 +118,7 @@ class Game {
                 print(firstTeamLife)
                 print(secondTeamLife)
                 var isValidFirstChoice =  false
-                var characterAttaking: Character!
+                var characterAttacking: Character!
                 while !isValidFirstChoice {
                     Print.lineBreak()
                     Print.playerTeam(player : player)
@@ -126,28 +126,28 @@ class Game {
                         if myChoice <= 3 {
                             switch myChoice {
                             case 1:
-                                characterAttaking = player.characters[0]
-                                if characterAttaking.health <= 0 {
+                                characterAttacking = player.characters[0]
+                                if characterAttacking.health <= 0 {
                                     Print.attackingDead()
                                     isValidFirstChoice = false
                                 } else{
-                                    Print.characterAttaking(characterAttaking : characterAttaking)
+                                    Print.characterAttacking(characterAttacking : characterAttacking)
                                 }
                             case 2:
-                                characterAttaking = player.characters[1]
-                                if characterAttaking.health <= 0 {
+                                characterAttacking = player.characters[1]
+                                if characterAttacking.health <= 0 {
                                     Print.attackingDead()
                                     isValidFirstChoice = false
                                 } else{
-                                    Print.characterAttaking(characterAttaking : characterAttaking)
+                                    Print.characterAttacking(characterAttacking : characterAttacking)
                                 }
                             case 3:
-                                characterAttaking = player.characters[2]
-                                if characterAttaking.health <= 0 {
+                                characterAttacking = player.characters[2]
+                                if characterAttacking.health <= 0 {
                                     Print.attackingDead()
                                     isValidFirstChoice = false
                                 } else{
-                                    Print.characterAttaking(characterAttaking : characterAttaking)
+                                    Print.characterAttacking(characterAttacking : characterAttacking)
                                 }
                             default:
                                 Print.notUnderstood()
@@ -155,10 +155,8 @@ class Game {
                         } else{
                             Print.notUnderstood()
                         }
-                        if myChoice <= 3 && characterAttaking.health > 0 {
+                        if myChoice <= 3 && characterAttacking.health > 0 {
                             isValidFirstChoice = true
-                        } else if (characterAttaking.health < 1){
-                            endBattle()
                         }
                     }
                 }
@@ -173,30 +171,30 @@ class Game {
                             switch myChoice {
                             case 1:
                                 characterAttacked = playerAttacked.characters[0]
-                                characterAttacked.inflictDamage(damage: characterAttaking.power.damage)
                                 if characterAttacked.health <= 0 {
                                     Print.attackedDead()
                                     isValidSecondChoice = false
                                 } else{
                                     Print.characterAttaked(characterAttacked : characterAttacked)
+                                    characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                                 }
                             case 2:
                                 characterAttacked = playerAttacked.characters[1]
-                                characterAttacked.inflictDamage(damage: characterAttaking.power.damage)
                                 if characterAttacked.health <= 0 {
                                     Print.attackedDead()
                                     isValidSecondChoice = false
                                 } else{
                                     Print.characterAttaked(characterAttacked : characterAttacked)
+                                    characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                                 }
                             case 3:
                                 characterAttacked = playerAttacked.characters[2]
-                                characterAttacked.inflictDamage(damage: characterAttaking.power.damage)
                                 if characterAttacked.health <= 0 {
                                     Print.attackedDead()
                                     isValidSecondChoice = false
                                 } else{
                                     Print.characterAttaked(characterAttacked : characterAttacked)
+                                    characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                                 }
                             default:
                                 Print.notUnderstood()
@@ -206,16 +204,13 @@ class Game {
                         }
                         if myChoice <= 3 && characterAttacked.health > 0 {
                             isValidSecondChoice = true
-                        } else if (characterAttacked.health < 1){
-                            endBattle()
                         }
-
                     }
                 }
             }
             
         }
-        
+        endBattle()
     }
     
     func endBattle(){
