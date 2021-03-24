@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Statistics: Game {
-    func countRound() {
+class Statistics {
+    func countRound(r : Int) {
     }
 }

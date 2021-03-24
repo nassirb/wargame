@@ -175,7 +175,6 @@ class Game {
                                 characterAttacked = playerAttacked.characters[0]
                                 if characterAttacked.health <= 0 {
                                     Print.attackedDead()
-                                    isValidSecondChoice = false
                                 } else{
                                     characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                                     Print.characterAttaked(characterAttacked : characterAttacked)
@@ -184,7 +183,6 @@ class Game {
                                 characterAttacked = playerAttacked.characters[1]
                                 if characterAttacked.health <= 0 {
                                     Print.attackedDead()
-                                    isValidSecondChoice = false
                                 } else{
                                     characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                                     Print.characterAttaked(characterAttacked : characterAttacked)
@@ -193,7 +191,6 @@ class Game {
                                 characterAttacked = playerAttacked.characters[2]
                                 if characterAttacked.health <= 0 {
                                     Print.attackedDead()
-                                    isValidSecondChoice = false
                                 } else{
                                     characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                                     Print.characterAttaked(characterAttacked : characterAttacked)
@@ -204,7 +201,7 @@ class Game {
                         } else{
                             Print.notUnderstood()
                         }
-                        if myChoice <= 3 && characterAttacked.health > 0 {
+                        if myChoice <= 3 {
                             isValidSecondChoice = true
                         }
                     }
