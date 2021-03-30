@@ -135,13 +135,4 @@ class Print {
     static func finishGame(){
         print("La partie est fini. Voici les statistiques de la partie:")
     }
-    static func announcWinner(ft : Int, st : Int){
-        if ft > st {
-            print("L'équipe GAGNANTE est l'équipe 1 BRAVO !")
-        } else if st > ft{
-            print("L'équipe GAGNANTE est l'équipe 2 BRAVO !")
-        } else{
-            print("Il semble que les deux équipes ont fait un combat équilibré aucune équipe n'en sort victorieuse")
-        }
-    }
 }

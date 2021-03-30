@@ -19,14 +19,14 @@ class Character {
     }
     
     func inflictDamage(damage: Int){
-        if health <= 0 {
-            return
+        if health - damage <= 0 {
+            health = 0
         } else {
             health -= damage
         }
     }
     
     func applyHealing(heal: Int) {
-        health -= heal
+        health += heal
     }
 }

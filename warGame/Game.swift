@@ -15,24 +15,24 @@ class Game {
     private var secondTeamLife: Int {
         players[1].characters.map(\.health).reduce(0, +)
     }
-    private var playerOne: String{
+    private var playerOne: String {
         players.map(\.name)[0]
     }
-    private var playerTwo: String{
+    private var playerTwo: String {
         players.map(\.name)[1]
     }
     var r : Int = 0
 //    var deadPlayers: [Character] = []
     
-    func choosePlayer(){
+    func choosePlayer() {
         var n = 0
         var nameOfPlayer = ""
         var teamCharacters: [Character] = []
         
         while n < 2 {
             n += 1
-            
             Print.lines()
+            
             let names = players.map(\.name)
             var isValid = false
             
@@ -46,13 +46,13 @@ class Game {
                     }
                 }
             }
+            
             Print.lineBreak()
             Print.welcomePlayerName(nameOfPlayer : nameOfPlayer)
             Print.lineBreak()
             Print.listOfCharacters()
             
             while teamCharacters.count < 3 {
-                
                 Print.lineBreak()
                 Print.chooseCharacter(teamCharacters : teamCharacters)
                 
@@ -103,7 +103,6 @@ class Game {
         let teamOne = Array(persos[..<midpoint])
         let teamTwo = Array(persos[midpoint...])
         
-        
         Print.lines()
         Print.playersList(playerOne : playerOne , teamOne : teamOne , playerTwo : playerTwo , teamTwo : teamTwo)
         Print.lines()
@@ -112,117 +111,128 @@ class Game {
         Print.lineBreak()
     }
     
-    func startBattle(){
+    func startBattle() {
         Print.TeamOneLife(firstTeamLife : firstTeamLife)
         Print.TeamTwoLife(secondTeamLife : secondTeamLife)
-        
         Print.lines()
         
         while firstTeamLife > 0 && secondTeamLife > 0 {
             r+=1
-             
             Print.TeamOneLife(firstTeamLife : firstTeamLife)
             Print.TeamTwoLife(secondTeamLife : secondTeamLife)
             Print.lineBreak()
+            
             for player in players {
                 print(firstTeamLife)
                 print(secondTeamLife)
-                var isValidFirstChoice =  false
-                var characterAttacking: Character!
-                while !isValidFirstChoice {
-                    Print.lineBreak()
-                    Print.playerTeam(player : player)
-                    if let characterChoice = readLine(), let myChoice = Int(characterChoice) {
-                        if myChoice <= 3 {
-                            switch myChoice {
-                            case 1:
-                                characterAttacking = player.characters[0]
-                                if characterAttacking.health <= 0 {
-                                    Print.attackingDead()
-                                } else{
-                                    Print.characterAttacking(characterAttacking : characterAttacking)
-                                }
-                            case 2:
-                                characterAttacking = player.characters[1]
-                                if characterAttacking.health <= 0 {
-                                    Print.attackingDead()
-                                } else{
-                                    Print.characterAttacking(characterAttacking : characterAttacking)
-                                }
-                            case 3:
-                                characterAttacking = player.characters[2]
-                                if characterAttacking.health <= 0 {
-                                    Print.attackingDead()
-                                } else{
-                                    Print.characterAttacking(characterAttacking : characterAttacking)
-                                }
-                            default:
-                                Print.notUnderstood()
-                            }
-                        } else{
-                            Print.notUnderstood()
-                        }
-                        if myChoice <= 3 {
-                            isValidFirstChoice = true
-                        }
-                    }
-                }
-                let playerAttacked = players.filter { $0.name != player.name}.first!
-                var characterAttacked: Character!
-                var isValidSecondChoice =  false
-                while !isValidSecondChoice {
-                    Print.lineBreak()
-                    Print.enemiTeam(playerAttacked : playerAttacked)
-                    if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
-                        if myChoice <= 3 {
-                            switch myChoice {
-                            case 1:
-                                characterAttacked = playerAttacked.characters[0]
-                                if characterAttacked.health <= 0 {
-                                    Print.attackedDead()
-                                } else{
-                                    characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
-                                    Print.characterAttaked(characterAttacked : characterAttacked)
-                                }
-                            case 2:
-                                characterAttacked = playerAttacked.characters[1]
-                                if characterAttacked.health <= 0 {
-                                    Print.attackedDead()
-                                } else{
-                                    characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
-                                    Print.characterAttaked(characterAttacked : characterAttacked)
-                                }
-                            case 3:
-                                characterAttacked = playerAttacked.characters[2]
-                                if characterAttacked.health <= 0 {
-                                    Print.attackedDead()
-                                } else{
-                                    characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
-                                    Print.characterAttaked(characterAttacked : characterAttacked)
-                                }
-                            default:
-                                Print.notUnderstood()
-                            }
-                        } else{
-                            Print.notUnderstood()
-                        }
-                        if myChoice <= 3 {
-                            isValidSecondChoice = true
-                        }
-                    }
-                }
+                
+                let characterAttacking = chooseAttackingCharacter(player: player)
+                chooseAttackedCharacter(characterAttacking: characterAttacking, player: player)
             }
             
         }
-        if firstTeamLife <= 0 || secondTeamLife <= 0 {
-            endBattle()
+        endBattle()
+    }
+    
+    private func chooseAttackingCharacter(player : Player) -> Character {
+        var isValidFirstChoice =  false
+        var characterAttacking: Character!
+        
+        while !isValidFirstChoice {
+            Print.lineBreak()
+            Print.playerTeam(player : player)
+            
+            if let characterChoice = readLine(), let myChoice = Int(characterChoice) {
+                if myChoice <= 3 {
+                    switch myChoice {
+                    case 1:
+                        characterAttacking = player.characters[0]
+                        if characterAttacking.health <= 0 {
+                            Print.attackingDead()
+                        } else {
+                            Print.characterAttacking(characterAttacking : characterAttacking)
+                            isValidFirstChoice = true
+                        }
+                    case 2:
+                        characterAttacking = player.characters[1]
+                        if characterAttacking.health <= 0 {
+                            Print.attackingDead()
+                        } else {
+                            Print.characterAttacking(characterAttacking : characterAttacking)
+                            isValidFirstChoice = true
+                        }
+                    case 3:
+                        characterAttacking = player.characters[2]
+                        if characterAttacking.health <= 0 {
+                            Print.attackingDead()
+                        } else {
+                            Print.characterAttacking(characterAttacking : characterAttacking)
+                            isValidFirstChoice = true
+                        }
+                    default:
+                        Print.notUnderstood()
+                    }
+                } else {
+                    Print.notUnderstood()
+                }
+            }
+        }
+        return characterAttacking
+    }
+    
+    private func chooseAttackedCharacter (characterAttacking : Character, player : Player) {
+        let playerAttacked = players.filter { $0.name != player.name}.first!
+        var characterAttacked: Character!
+        var isValidSecondChoice =  false
+        
+        while !isValidSecondChoice {
+            Print.lineBreak()
+            Print.enemiTeam(playerAttacked : playerAttacked)
+            
+            if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
+                if myChoice <= 3 {
+                    switch myChoice {
+                    case 1:
+                        characterAttacked = playerAttacked.characters[0]
+                        if characterAttacked.health <= 0 {
+                            Print.attackedDead()
+                        } else {
+                            characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
+                            Print.characterAttaked(characterAttacked : characterAttacked)
+                            isValidSecondChoice = true
+                        }
+                    case 2:
+                        characterAttacked = playerAttacked.characters[1]
+                        if characterAttacked.health <= 0 {
+                            Print.attackedDead()
+                        } else {
+                            characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
+                            Print.characterAttaked(characterAttacked : characterAttacked)
+                            isValidSecondChoice = true
+                        }
+                    case 3:
+                        characterAttacked = playerAttacked.characters[2]
+                        if characterAttacked.health <= 0 {
+                            Print.attackedDead()
+                        } else {
+                            characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
+                            Print.characterAttaked(characterAttacked : characterAttacked)
+                            isValidSecondChoice = true
+                        }
+                    default:
+                        Print.notUnderstood()
+                    }
+                } else {
+                    Print.notUnderstood()
+                }
+            }
         }
     }
     
-    func endBattle(){
+    func endBattle() {
         Print.finishGame()
-        Statistics.countRound(r: r)
-        Statistics.scoreTeams(ft: firstTeamLife, fp: playerOne, st: secondTeamLife, sp: playerTwo)
-        Print.announcWinner(ft : firstTeamLife , st : secondTeamLife)
+        Statistics.countRound(round: r)
+        Statistics.scoreTeams(firsTeam: firstTeamLife, firstPlayer: playerOne, secondTeam: secondTeamLife, secondPlayer: playerTwo)
+        Statistics.announcWinner(firsTeam : firstTeamLife , secondTeam : secondTeamLife)
     }
 }
