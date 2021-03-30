@@ -11,4 +11,3 @@ import Foundation
 let game = Game()
 game.choosePlayer()
 game.startBattle()
-game.endBattle()

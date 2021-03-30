@@ -15,7 +15,14 @@ class Game {
     private var secondTeamLife: Int {
         players[1].characters.map(\.health).reduce(0, +)
     }
-    var r = 0
+    private var playerOne: String{
+        players.map(\.name)[0]
+    }
+    private var playerTwo: String{
+        players.map(\.name)[1]
+    }
+    var r : Int = 0
+//    var deadPlayers: [Character] = []
     
     func choosePlayer(){
         var n = 0
@@ -32,8 +39,11 @@ class Game {
             while !isValid {
                 Print.enterPlayerName(n : n)
                 if let playerName = readLine(){
-                    nameOfPlayer = playerName
-                    isValid = !names.contains(playerName)
+                    nameOfPlayer = playerName.uppercased()
+                    isValid = !names.contains(playerName.uppercased())
+                    if names.contains(playerName.uppercased()) {
+                        Print.notValidPlayerName()
+                    }
                 }
             }
             Print.lineBreak()
@@ -93,8 +103,6 @@ class Game {
         let teamOne = Array(persos[..<midpoint])
         let teamTwo = Array(persos[midpoint...])
         
-        let playerOne = players.map(\.name)[0]
-        let playerTwo = players.map(\.name)[1]
         
         Print.lines()
         Print.playersList(playerOne : playerOne , teamOne : teamOne , playerTwo : playerTwo , teamTwo : teamTwo)
@@ -110,9 +118,9 @@ class Game {
         
         Print.lines()
         
-        while firstTeamLife >= 1 && secondTeamLife >= 1 {
+        while firstTeamLife > 0 && secondTeamLife > 0 {
             r+=1
-            
+             
             Print.TeamOneLife(firstTeamLife : firstTeamLife)
             Print.TeamTwoLife(secondTeamLife : secondTeamLife)
             Print.lineBreak()
@@ -131,7 +139,6 @@ class Game {
                                 characterAttacking = player.characters[0]
                                 if characterAttacking.health <= 0 {
                                     Print.attackingDead()
-                                    isValidFirstChoice = false
                                 } else{
                                     Print.characterAttacking(characterAttacking : characterAttacking)
                                 }
@@ -139,7 +146,6 @@ class Game {
                                 characterAttacking = player.characters[1]
                                 if characterAttacking.health <= 0 {
                                     Print.attackingDead()
-                                    isValidFirstChoice = false
                                 } else{
                                     Print.characterAttacking(characterAttacking : characterAttacking)
                                 }
@@ -147,7 +153,6 @@ class Game {
                                 characterAttacking = player.characters[2]
                                 if characterAttacking.health <= 0 {
                                     Print.attackingDead()
-                                    isValidFirstChoice = false
                                 } else{
                                     Print.characterAttacking(characterAttacking : characterAttacking)
                                 }
@@ -157,7 +162,7 @@ class Game {
                         } else{
                             Print.notUnderstood()
                         }
-                        if myChoice <= 3 && characterAttacking.health > 0 {
+                        if myChoice <= 3 {
                             isValidFirstChoice = true
                         }
                     }
@@ -209,13 +214,15 @@ class Game {
             }
             
         }
-        if firstTeamLife <= 0 && secondTeamLife <= 0 {
+        if firstTeamLife <= 0 || secondTeamLife <= 0 {
             endBattle()
         }
     }
     
     func endBattle(){
-        print("Le nombre de round est de:", r)
-        print("La partie est fini.")
+        Print.finishGame()
+        Statistics.countRound(r: r)
+        Statistics.scoreTeams(ft: firstTeamLife, fp: playerOne, st: secondTeamLife, sp: playerTwo)
+        Print.announcWinner(ft : firstTeamLife , st : secondTeamLife)
     }
 }

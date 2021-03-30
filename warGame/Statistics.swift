@@ -8,6 +8,11 @@
 import Foundation
 
 class Statistics {
-    func countRound(r : Int) {
+    static func countRound(r : Int) {
+            print("La bataille c'est déroulé en \(r) rounds")
+    }
+    static func scoreTeams(ft : Int, fp: String, st : Int, sp: String) {
+        print("Equipe 1 commandée par le Caporal Chef \(fp) son score est éstimé à : \(ft) points de vie"
+        + "\nEquipe 2 commandée par le Caporal Chef \(sp) son score est éstimé à : \(st) points de vie")
     }
 }
