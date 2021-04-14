@@ -238,7 +238,7 @@ class Game {
         
         while !isValidThirdChoice {
             Print.lineBreak()
-            Print.playerTeam(player : player)
+            Print.healerTeam(player : player)
             
             if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
                 if myChoice <= 3 {

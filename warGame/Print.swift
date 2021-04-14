@@ -126,7 +126,14 @@ class Print {
     }
     
     static func characterHealed(characterHealed : Character){
-        print("Vous avez ciblé le personnage suivant:" , characterHealed.name ,", pour subir l'action")
+        print("Vous avez choisi le personnage suivant:" , characterHealed.name ,", pour subir les soins")
+    }
+    
+    static func healerTeam(player :  Player){
+        print("\(player.name) choisissez parmis votre équipe un joueur blessé pour le soigner"
+            + "\n1. \(player.characters.map(\.name)[0]) et son score life est de : \(player.characters.map(\.health)[0])"
+            + "\n2. \(player.characters.map(\.name)[1]) et son score life est de : \(player.characters.map(\.health)[1])"
+            + "\n3. \(player.characters.map(\.name)[2]) et son score life est de : \(player.characters.map(\.health)[2])")
     }
     
     static func attackedDead(){
