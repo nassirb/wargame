@@ -22,7 +22,6 @@ class Game {
         players.map(\.name)[1]
     }
     var r : Int = 0
-//    var deadPlayers: [Character] = []
     
     func choosePlayer() {
         var n = 0
@@ -127,7 +126,11 @@ class Game {
                 print(secondTeamLife)
                 
                 let characterAttacking = chooseAttackingCharacter(player: player)
-                chooseAttackedCharacter(characterAttacking: characterAttacking, player: player)
+                if characterAttacking.name == "Chirurgien" || characterAttacking.name == "Infirmier" || characterAttacking.name == "Chaman" {
+                    chooseHealingCharacter(characterAttacking: characterAttacking, player: player)
+                } else {
+                    chooseAttackedCharacter(characterAttacking: characterAttacking, player: player)
+                }
             }
             
         }
@@ -218,6 +221,54 @@ class Game {
                             characterAttacked.inflictDamage(damage: characterAttacking.power.damage)
                             Print.characterAttaked(characterAttacked : characterAttacked)
                             isValidSecondChoice = true
+                        }
+                    default:
+                        Print.notUnderstood()
+                    }
+                } else {
+                    Print.notUnderstood()
+                }
+            }
+        }
+    }
+    
+    private func chooseHealingCharacter (characterAttacking : Character, player : Player) {
+        var characterHealed: Character!
+        var isValidThirdChoice =  false
+        
+        while !isValidThirdChoice {
+            Print.lineBreak()
+            Print.playerTeam(player : player)
+            
+            if let enemiChoice = readLine(), let myChoice = Int(enemiChoice) {
+                if myChoice <= 3 {
+                    switch myChoice {
+                    case 1:
+                        characterHealed = player.characters[0]
+                        if characterHealed.health <= 0 {
+                            Print.attackedDead()
+                        } else {
+                            characterHealed.applyHealing(heal: characterAttacking.power.heal)
+                            Print.characterHealed(characterHealed : characterHealed)
+                            isValidThirdChoice = true
+                        }
+                    case 2:
+                        characterHealed = player.characters[1]
+                        if characterHealed.health <= 0 {
+                            Print.attackedDead()
+                        } else {
+                            characterHealed.applyHealing(heal: characterAttacking.power.heal)
+                            Print.characterHealed(characterHealed : characterHealed)
+                            isValidThirdChoice = true
+                        }
+                    case 3:
+                        characterHealed = player.characters[2]
+                        if characterHealed.health <= 0 {
+                            Print.attackedDead()
+                        } else {
+                            characterHealed.applyHealing(heal: characterAttacking.power.heal)
+                            Print.characterHealed(characterHealed : characterHealed)
+                            isValidThirdChoice = true
                         }
                     default:
                         Print.notUnderstood()

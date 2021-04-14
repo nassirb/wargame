@@ -125,6 +125,10 @@ class Print {
         print("Vous avez ciblé le personnage suivant:" , characterAttacked.name ,", pour subir l'action")
     }
     
+    static func characterHealed(characterHealed : Character){
+        print("Vous avez ciblé le personnage suivant:" , characterHealed.name ,", pour subir l'action")
+    }
+    
     static func attackedDead(){
         print("Désolé, le personnage ciblé est déjà mort, choisissez en un autre !")
     }
