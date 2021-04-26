@@ -10,6 +10,14 @@ import Foundation
 class Chest {
     func getNewWeapon() -> Weapon {
         let axe = Weapon(name: "axe", damage: 5)
-        return axe
+        let gun = Weapon(name: "gun", damage: 10)
+        let bomb = Weapon(name: "bomb", damage: 15)
+        var weapons: [Weapon] = []
+        
+        weapons.append(axe)
+        weapons.append(gun)
+        weapons.append(bomb)
+        
+        return weapons.randomElement()!
     }
 }

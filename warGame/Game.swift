@@ -280,6 +280,10 @@ class Game {
         }
     }
     
+    private func randomChest (chest : Chest) {
+        
+    }
+    
     func endBattle() {
         Print.finishGame()
         Statistics.countRound(round: r)
