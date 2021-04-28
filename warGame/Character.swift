@@ -29,4 +29,9 @@ class Character {
     func applyHealing(heal: Int) {
         health += heal
     }
+    
+    func updateWeapon (newWeapon : Weapon) {
+        power.damage = newWeapon.damage
+        power.name = newWeapon.name
+    }
 }

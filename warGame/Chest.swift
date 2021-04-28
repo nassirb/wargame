@@ -8,16 +8,22 @@
 import Foundation
 
 class Chest {
-    func getNewWeapon() -> Weapon {
+    static func getNewWeapon() -> Weapon? {
         let axe = Weapon(name: "axe", damage: 5)
         let gun = Weapon(name: "gun", damage: 10)
         let bomb = Weapon(name: "bomb", damage: 15)
-        var weapons: [Weapon] = []
+        let weapons: [Weapon] = [axe, gun, bomb]
         
-        weapons.append(axe)
-        weapons.append(gun)
-        weapons.append(bomb)
+        if canGetNewItem(){
+            return weapons.randomElement()!
+        } else {
+            return nil
+        }
         
-        return weapons.randomElement()!
+    }
+    private static func canGetNewItem() -> Bool {
+        let randomNumber = (1...5).randomElement()
+        
+        return randomNumber == 3
     }
 }

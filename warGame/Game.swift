@@ -273,15 +273,14 @@ class Game {
                     default:
                         Print.notUnderstood()
                     }
+                    if let weapon = Chest.getNewWeapon() {
+                        characterHealed.power.damage = weapon.damage
+                    }
                 } else {
                     Print.notUnderstood()
                 }
             }
         }
-    }
-    
-    private func randomChest (chest : Chest) {
-        
     }
     
     func endBattle() {
