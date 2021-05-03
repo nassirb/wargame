@@ -9,9 +9,9 @@ import Foundation
 
 class Chest {
     static func getNewWeapon() -> Weapon? {
-        let axe = Weapon(name: "axe", damage: 5)
-        let gun = Weapon(name: "gun", damage: 10)
-        let bomb = Weapon(name: "bomb", damage: 15)
+        let axe = Weapon(name: "axe", damage: 50)
+        let gun = Weapon(name: "gun", damage: 70)
+        let bomb = Weapon(name: "bomb", damage: 100)
         let weapons: [Weapon] = [axe, gun, bomb]
         
         if canGetNewItem(){

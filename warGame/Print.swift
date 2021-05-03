@@ -143,6 +143,7 @@ class Print {
     static func attackingDead(){
         print("Désolé, choisissez un autre combattant, celui ci n'est plus opérationel !")
     }
+    
     static func finishGame(){
         print("La partie est fini. Voici les statistiques de la partie:")
     }

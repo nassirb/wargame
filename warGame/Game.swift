@@ -175,6 +175,10 @@ class Game {
                     default:
                         Print.notUnderstood()
                     }
+                    if let weapon = Chest.getNewWeapon() {
+                        print("Vous avez été équipé d'une nouvelle arme: ",weapon.name,", d'une puissance de :", weapon.damage, "points")
+                        characterAttacking.power.damage = weapon.damage
+                    }
                 } else {
                     Print.notUnderstood()
                 }
@@ -272,9 +276,6 @@ class Game {
                         }
                     default:
                         Print.notUnderstood()
-                    }
-                    if let weapon = Chest.getNewWeapon() {
-                        characterHealed.power.damage = weapon.damage
                     }
                 } else {
                     Print.notUnderstood()
