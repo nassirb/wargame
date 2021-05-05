@@ -144,6 +144,24 @@ class Print {
         print("Désolé, choisissez un autre combattant, celui ci n'est plus opérationel !")
     }
     
+    static func chestApear(){
+        print("Un coffre est attaparu vouslez vous l'ouvrir ? Choisissez 1 ou 2 pour faire votre choix:"
+              + "\n1. OUI ouvrir le coffre"
+              + "\n2. NON refuser le coffre")
+    }
+    
+    static func acceptChestChoice(){
+        print("Vous avez accepté le coffre")
+    }
+    
+    static func refuseChestChoice(){
+        print("Vous n'avez pas accepté le coffre")
+    }
+    
+    static func newWeapon(weapon : Weapon){
+        print("Vous avez été équipé d'une nouvelle arme: ",weapon.name,", d'une puissance de :", weapon.damage, "points")
+    }
+    
     static func finishGame(){
         print("La partie est fini. Voici les statistiques de la partie:")
     }

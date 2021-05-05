@@ -14,16 +14,6 @@ class Chest {
         let bomb = Weapon(name: "bomb", damage: 100)
         let weapons: [Weapon] = [axe, gun, bomb]
         
-        if canGetNewItem(){
-            return weapons.randomElement()!
-        } else {
-            return nil
-        }
-        
-    }
-    private static func canGetNewItem() -> Bool {
-        let randomNumber = (1...5).randomElement()
-        
-        return randomNumber == 3
+        return weapons.randomElement()!
     }
 }

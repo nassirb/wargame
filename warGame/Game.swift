@@ -131,6 +131,9 @@ class Game {
                 } else {
                     chooseAttackedCharacter(characterAttacking: characterAttacking, player: player)
                 }
+                if firstTeamLife == 0 || secondTeamLife == 0 {
+                    break
+                }
             }
             
         }
@@ -175,10 +178,7 @@ class Game {
                     default:
                         Print.notUnderstood()
                     }
-                    if let weapon = Chest.getNewWeapon() {
-                        print("Vous avez été équipé d'une nouvelle arme: ",weapon.name,", d'une puissance de :", weapon.damage, "points")
-                        characterAttacking.power.damage = weapon.damage
-                    }
+                    openingChest(characterAttacking : characterAttacking)
                 } else {
                     Print.notUnderstood()
                 }
@@ -282,6 +282,37 @@ class Game {
                 }
             }
         }
+    }
+    
+    private func openingChest(characterAttacking : Character){
+        if randomItemChest(){
+            Print.lines()
+            Print.chestApear()
+            let characterAttacking: Character! = characterAttacking
+            
+            if let acceptChest = readLine(), let myChoice = Int(acceptChest) {
+                if myChoice <= 2 {
+                    switch myChoice {
+                    case 1:
+                        Print.acceptChestChoice()
+                        if let weapon = Chest.getNewWeapon() {
+                            characterAttacking.power.damage = weapon.damage
+                            return Print.newWeapon(weapon: weapon)
+                        }
+                    case 2:
+                        Print.refuseChestChoice()
+                    default:
+                        Print.notUnderstood()
+                    }
+                }
+            }
+        } else {
+            return
+        }
+    }
+    private func randomItemChest() -> Bool {
+        let randomNumberChest = (1...3).randomElement()
+        return randomNumberChest == 2
     }
     
     func endBattle() {
