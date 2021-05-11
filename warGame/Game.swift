@@ -21,7 +21,7 @@ class Game {
     private var playerTwo: String {
         players.map(\.name)[1]
     }
-    var r : Int = 0
+    var round : Int = 0
     
     func choosePlayer() {
         var n = 0
@@ -111,19 +111,17 @@ class Game {
     }
     
     func startBattle() {
-        Print.TeamOneLife(firstTeamLife : firstTeamLife)
-        Print.TeamTwoLife(secondTeamLife : secondTeamLife)
         Print.lines()
         
         while firstTeamLife > 0 && secondTeamLife > 0 {
-            r+=1
-            Print.TeamOneLife(firstTeamLife : firstTeamLife)
-            Print.TeamTwoLife(secondTeamLife : secondTeamLife)
-            Print.lineBreak()
+            round+=1
             
             for player in players {
-                print(firstTeamLife)
-                print(secondTeamLife)
+                
+                Print.lines()
+                Print.TeamOneLife(firstTeamLife : firstTeamLife)
+                Print.TeamTwoLife(secondTeamLife : secondTeamLife)
+                Print.lineBreak()
                 
                 let characterAttacking = chooseAttackingCharacter(player: player)
                 if characterAttacking.name == "Chirurgien" || characterAttacking.name == "Infirmier" || characterAttacking.name == "Chaman" {
@@ -178,7 +176,11 @@ class Game {
                     default:
                         Print.notUnderstood()
                     }
-                    openingChest(characterAttacking : characterAttacking)
+                    if characterAttacking.name == "Chirurgien" || characterAttacking.name == "Infirmier" || characterAttacking.name == "Chaman" {
+                        break
+                    }else{
+                        openingChest(characterAttacking : characterAttacking)
+                    }
                 } else {
                     Print.notUnderstood()
                 }
@@ -284,8 +286,8 @@ class Game {
         }
     }
     
-    private func openingChest(characterAttacking : Character){
-        if randomItemChest(){
+    private func openingChest(characterAttacking : Character) {
+        if randomItemChest() {
             Print.lines()
             Print.chestApear()
             let characterAttacking: Character! = characterAttacking
@@ -296,7 +298,7 @@ class Game {
                     case 1:
                         Print.acceptChestChoice()
                         if let weapon = Chest.getNewWeapon() {
-                            characterAttacking.power.damage = weapon.damage
+                            characterAttacking.updateWeapon(newWeapon: weapon)
                             return Print.newWeapon(weapon: weapon)
                         }
                     case 2:
@@ -304,6 +306,8 @@ class Game {
                     default:
                         Print.notUnderstood()
                     }
+                } else {
+                    Print.notUnderstood()
                 }
             }
         } else {
@@ -311,14 +315,14 @@ class Game {
         }
     }
     private func randomItemChest() -> Bool {
-        let randomNumberChest = (1...3).randomElement()
+        let randomNumberChest = (1...6).randomElement()
         return randomNumberChest == 2
     }
     
     func endBattle() {
         Print.finishGame()
-        Statistics.countRound(round: r)
-        Statistics.scoreTeams(firsTeam: firstTeamLife, firstPlayer: playerOne, secondTeam: secondTeamLife, secondPlayer: playerTwo)
-        Statistics.announcWinner(firsTeam : firstTeamLife , secondTeam : secondTeamLife)
+        Print.countRound(round: round)
+        Print.scoreTeams(firsTeam: firstTeamLife, firstPlayer: playerOne, secondTeam: secondTeamLife, secondPlayer: playerTwo)
+        Print.announcWinner(firsTeam : firstTeamLife , secondTeam : secondTeamLife)
     }
 }

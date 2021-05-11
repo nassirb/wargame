@@ -27,7 +27,6 @@
 		EEB65917255193CA003EA970 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB65916255193CA003EA970 /* main.swift */; };
 		EEF8BAB6255A8E680065926F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8BAB5255A8E680065926F /* Game.swift */; };
 		EEF8BAB9255A8E790065926F /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8BAB8255A8E790065926F /* Chest.swift */; };
-		EEF8BABC255A8EA30065926F /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8BABB255A8EA30065926F /* Statistics.swift */; };
 		EEF8BABF255A8EB30065926F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8BABE255A8EB30065926F /* Player.swift */; };
 		EEF8BAC2255A8EC60065926F /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8BAC1255A8EC60065926F /* Character.swift */; };
 		EEF8BAC5255A8EDC0065926F /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8BAC4255A8EDC0065926F /* Weapon.swift */; };
@@ -67,7 +66,6 @@
 		EEB65916255193CA003EA970 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EEF8BAB5255A8E680065926F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		EEF8BAB8255A8E790065926F /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
-		EEF8BABB255A8EA30065926F /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		EEF8BABE255A8EB30065926F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		EEF8BAC1255A8EC60065926F /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		EEF8BAC4255A8EDC0065926F /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				EEB65916255193CA003EA970 /* main.swift */,
 				EEF8BAB5255A8E680065926F /* Game.swift */,
 				EEF8BAB8255A8E790065926F /* Chest.swift */,
-				EEF8BABB255A8EA30065926F /* Statistics.swift */,
 				EEF8BABE255A8EB30065926F /* Player.swift */,
 				EE302F4A2588BD6600AC05D4 /* Print.swift */,
 				EE56B3DF257543870052343A /* Characters */,
@@ -227,7 +224,6 @@
 				EEB65917255193CA003EA970 /* main.swift in Sources */,
 				EE39AAF92569959100041FFA /* Surgeon.swift in Sources */,
 				EE39AADD256984E700041FFA /* Axe.swift in Sources */,
-				EEF8BABC255A8EA30065926F /* Statistics.swift in Sources */,
 				EE39AAE325698C2A00041FFA /* Bow.swift in Sources */,
 				EEF8BAC2255A8EC60065926F /* Character.swift in Sources */,
 				EE39AAE625698C8100041FFA /* Shotgun.swift in Sources */,
