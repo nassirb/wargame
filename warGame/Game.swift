@@ -10,10 +10,10 @@ import Foundation
 class Game {
     var players: [Player] = []
     private var firstTeamLife: Int {
-        players[0].characters.map(\.health).reduce(0, +)
+        players[0].charactersTotalHealth
     }
     private var secondTeamLife: Int {
-        players[1].characters.map(\.health).reduce(0, +)
+        players[1].charactersTotalHealth
     }
     private var playerOne: String {
         players.map(\.name)[0]
@@ -26,7 +26,6 @@ class Game {
     func choosePlayer() {
         var n = 0
         var nameOfPlayer = ""
-        var teamCharacters: [Character] = []
         
         while n < 2 {
             n += 1
@@ -49,44 +48,8 @@ class Game {
             Print.lineBreak()
             Print.welcomePlayerName(nameOfPlayer : nameOfPlayer)
             Print.lineBreak()
-            Print.listOfCharacters()
             
-            while teamCharacters.count < 3 {
-                Print.lineBreak()
-                Print.chooseCharacter(teamCharacters : teamCharacters)
-                
-                if let playerChoice = readLine(), let choice = Int(playerChoice) {
-                    if choice <= 7 {
-                        switch choice {
-                        case 1:
-                            teamCharacters.append(Viking())
-                            Print.vikingCharcter()
-                        case 2:
-                            teamCharacters.append(Knight())
-                            Print.knightCharcter()
-                        case 3:
-                            teamCharacters.append(Bowman())
-                            Print.bowmanCharcter()
-                        case 4:
-                            teamCharacters.append(Soldier())
-                            Print.soldierCharcter()
-                        case 5:
-                            teamCharacters.append(Shaman())
-                            Print.shamanCharcter()
-                        case 6:
-                            teamCharacters.append(Surgeon())
-                            Print.surgeonCharcter()
-                        case 7:
-                            teamCharacters.append(Nurse())
-                            Print.nurseCharcter()
-                        default:
-                            Print.notUnderstood()
-                        }
-                    } else {
-                        Print.notUnderstood()
-                    }
-                }
-            }
+            var teamCharacters = Player.getCharacters()
             
             Print.lineBreak()
             Print.congratTeamCompo()
@@ -113,7 +76,7 @@ class Game {
     func startBattle() {
         Print.lines()
         
-        while firstTeamLife > 0 && secondTeamLife > 0 {
+        while firstTeamLife > 0 && secondTeamLife > 0 && players[0].isLastCharacterHealer() && players[1].isLastCharacterHealer(){
             round+=1
             
             for player in players {
@@ -129,7 +92,8 @@ class Game {
                 } else {
                     chooseAttackedCharacter(characterAttacking: characterAttacking, player: player)
                 }
-                if firstTeamLife == 0 || secondTeamLife == 0 {
+                
+                if firstTeamLife == 0 || secondTeamLife == 0 || players[0].isLastCharacterHealer() || players[1].isLastCharacterHealer() {
                     break
                 }
             }
@@ -320,9 +284,17 @@ class Game {
     }
     
     func endBattle() {
+        Print.lines()
         Print.finishGame()
         Print.countRound(round: round)
+        Print.lines()
         Print.scoreTeams(firsTeam: firstTeamLife, firstPlayer: playerOne, secondTeam: secondTeamLife, secondPlayer: playerTwo)
+        Print.lines()
+        Print.playerTwoTeam(player: players[0])
+        Print.lines()
+        Print.playerTwoTeam(player: players[1])
+        Print.lines()
         Print.announcWinner(firsTeam : firstTeamLife , secondTeam : secondTeamLife)
+        Print.lines()
     }
 }

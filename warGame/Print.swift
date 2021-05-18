@@ -182,6 +182,19 @@ class Print {
         print("Vous avez été équipé d'une nouvelle arme: ",weapon.name,", d'une puissance de :", weapon.damage, "points")
     }
     
+    static func playerTwoTeam(player :  Player){
+        print("\(player.name)! Voici le score final de votre équipe"
+            + "\n1. \(player.characters.map(\.name)[0]) et son score life est de : \(player.characters.map(\.health)[0])"
+            + "\n2. \(player.characters.map(\.name)[1]) et son score life est de : \(player.characters.map(\.health)[1])"
+            + "\n3. \(player.characters.map(\.name)[2]) et son score life est de : \(player.characters.map(\.health)[2])")
+    }
+    static func playerOneTeam(player :  Player){
+        print("\(player.name)! Voici le score final de votre équipe"
+            + "\n1. \(player.characters.map(\.name)[0]) et son score life est de : \(player.characters.map(\.health)[0])"
+            + "\n2. \(player.characters.map(\.name)[1]) et son score life est de : \(player.characters.map(\.health)[1])"
+            + "\n3. \(player.characters.map(\.name)[2]) et son score life est de : \(player.characters.map(\.health)[2])")
+    }
+    
     static func finishGame(){
         print("La partie est fini. Voici les statistiques de la partie:")
     }
