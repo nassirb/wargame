@@ -76,7 +76,7 @@ class Game {
     func startBattle() {
         Print.lines()
         
-        while firstTeamLife > 0 && secondTeamLife > 0 && players[0].isLastCharacterHealer() && players[1].isLastCharacterHealer(){
+        while firstTeamLife > 0 && secondTeamLife > 0 && !players[0].isLastCharacterHealer() && !players[1].isLastCharacterHealer(){
             round+=1
             
             for player in players {
@@ -94,6 +94,7 @@ class Game {
                 }
                 
                 if firstTeamLife == 0 || secondTeamLife == 0 || players[0].isLastCharacterHealer() || players[1].isLastCharacterHealer() {
+                    print("Vous n'avez plus de Combattant ,ou alors il ne reste qu'un ou des Guerrisseur(s)")
                     break
                 }
             }
